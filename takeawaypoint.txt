@@ -1,0 +1,44 @@
+Frontend 
+html => structure
+css => is used to beautify
+react => is used to deals with data
+
+Image = always place image in public folder . in src of image tag always points the public folder
+
+Component:
+    Component are function whose first letter is always capital and it is called just like calling
+    tag. <Home></Home>
+
+    Component must return only one wrapper.
+    <> </> => it is called react fragment 
+
+    Use {} (curly braces) to perform javascript operation inside tag (+,-,8,/,variable call, map, filter)
+
+    Component are custom tag
+
+Anything that is written inside return of component are printed(displayed) on the browser.
+
+
+Routing :(Changing Path)
+
+        NavLink changes the URL 
+        Route gives component based on URL
+
+        localhost:3000/blog?name=Ram&age=20 => URL
+        |__________________||______________|
+        Anything before ? is Route
+        Anything after ? is called query string or search string
+
+        Here, blog is called route parameter and name , age is called query parameter
+
+
+HOOKS:
+   1. useState();
+   2. useEffect();
+   3. useParams();  => To get dynamic route parameters
+   4. useSearchParams();  => To get query parameters 
+   5. useNavigate();  => To change path on click events
+
+
+useState
+NestedRouting
