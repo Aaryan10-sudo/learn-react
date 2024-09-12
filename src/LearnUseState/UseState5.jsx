@@ -1,18 +1,18 @@
 import React, { useState } from "react";
 
 const UseState5 = () => {
-  let [type, setType] = useState("password");
-
+  let [show, setShow] = useState("password");
   return (
     <div>
-      <label htmlFor="password">Password</label>
-      <br /> <input type={type}></input>
+      <input type={show} placeholder="password"></input>
       <button
         onClick={() => {
-          type === "password" ? setType("text") : setType("password");
+          {
+            show === "text" ? setShow("password") : setShow("text");
+          }
         }}
       >
-        {type === "password" ? "SHOW" : "HIDE"}
+        {show === "password" ? "SHOW" : "HIDE"}
       </button>
     </div>
   );

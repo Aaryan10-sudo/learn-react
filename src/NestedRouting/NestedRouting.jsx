@@ -5,18 +5,16 @@ const NestedRouting = () => {
   return (
     <>
       <Routes>
-        {/* <Route path="/a" element={<div></div>}></Route>
-        <Route path="/a/a1"></Route>
-        <Route path="/a/a1/a2"></Route> */}
         <Route path="/" element={<Outlet />}>
-          <Route index element={<div>This is home page</div>}></Route>
-          <Route path="a" element={<Outlet />}>
-            <Route index element={<div>This is a page</div>}></Route>
-            <Route path="a1" element={<Outlet />}>
-              <Route index element={<div>This is a1 page</div>}></Route>
-              <Route path="a2" element={<div>This is a2 page</div>}></Route>
-
-              <Route path=":id" element={<div>Random Page</div>}></Route>
+          <Route index element={<div>This is a Grandfather</div>}></Route>
+          <Route path="nishant" element={<Outlet />}>
+            <Route index element={<div>This is a father</div>}></Route>
+            <Route path="ram" element={<Outlet />}>
+              <Route index element={<div>This is a son</div>}></Route>
+              <Route
+                path="shyam"
+                element={<div>This is a grandson</div>}
+              ></Route>
             </Route>
           </Route>
         </Route>

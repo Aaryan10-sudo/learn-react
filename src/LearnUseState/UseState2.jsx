@@ -4,7 +4,7 @@ const UseState2 = () => {
   let [show, setShow] = useState(true);
   return (
     <>
-      {show === true && <img src="./public/vite.svg" />}
+      {show === true && <img src="/public/vite.svg" />}
       <button
         onClick={() => {
           setShow(true);
@@ -14,7 +14,7 @@ const UseState2 = () => {
       </button>
       <button
         onClick={() => {
-          setShow();
+          setShow(false);
         }}
       >
         HIDE

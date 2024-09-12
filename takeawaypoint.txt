@@ -40,5 +40,4 @@ HOOKS:
    5. useNavigate();  => To change path on click events
 
 
-useState
-NestedRouting
+

@@ -1,26 +1,24 @@
 import React, { useState } from "react";
 
 const UseState4 = () => {
-  let [type, setType] = useState("password");
-
+  let [show, setShow] = useState("password");
   return (
     <div>
-      <label htmlFor="password">Password</label>
-      <br /> <input type={type}></input>
+      <input type={show} placeholder="Password"></input>
       <br />
       <button
         onClick={() => {
-          setType("text");
+          setShow("text");
         }}
       >
-        SHOW
+        DEKHA
       </button>
       <button
         onClick={() => {
-          setType("password");
+          setShow("password");
         }}
       >
-        HIDE
+        LUKA
       </button>
     </div>
   );
