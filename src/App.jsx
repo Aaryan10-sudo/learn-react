@@ -27,7 +27,7 @@ const App = () => {
   let [name, setName] = useState("Ram");
   return (
     <>
-      <Context.Provider value={{ name: name, setName }}>
+      <Context.Provider value={{ name, setName }}>
         <Parent />
         {/* <GreatGrandChild value={name} /> */}
       </Context.Provider>

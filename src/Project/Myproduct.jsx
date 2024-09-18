@@ -1,9 +1,11 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const Myproduct = () => {
   let [product, setProduct] = useState([]);
+  let navigate = useNavigate();
 
   const myProduct = async () => {
     try {
@@ -44,7 +46,7 @@ const Myproduct = () => {
     myProduct();
   }, []);
   return (
-    <div style={{ display: "flex" }}>
+    <div style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
       {product.map((value, index) => {
         return (
           <div
@@ -52,8 +54,8 @@ const Myproduct = () => {
             style={{
               border: "1px solid black",
               margin: "10px",
-              height: "300px",
-              width: "300px",
+              height: "320px",
+              width: "280px",
             }}
           >
             <div
@@ -73,8 +75,22 @@ const Myproduct = () => {
             <div style={{ padding: "10px" }}>Price :{value.Price}</div>
             <div style={{ padding: "10px" }}>Quantity :{value.Quantity}</div>
             <br />
-            <button style={{ margin: "7px" }}>View</button>
-            <button style={{ margin: "7px" }}>Update</button>
+            <button
+              style={{ margin: "7px" }}
+              onClick={() => {
+                navigate(`/product/${value._id}`);
+              }}
+            >
+              View
+            </button>
+            <button
+              style={{ margin: "7px" }}
+              onClick={() => {
+                navigate(`/product/update/${value._id}`);
+              }}
+            >
+              Update
+            </button>
             <button
               style={{ margin: "7px" }}
               onClick={() => {

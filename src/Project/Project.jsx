@@ -4,6 +4,8 @@ import { Outlet, Route, Routes } from "react-router-dom";
 import Create from "./Create";
 import Myproduct from "./Myproduct";
 import Footer from "./Footer";
+import ViewProduct from "./ViewProduct";
+import UpdateProduct from "./UpdateProduct";
 
 const Project = () => {
   return (
@@ -23,8 +25,9 @@ const Project = () => {
           <Route path="product" element={<Outlet />}>
             <Route index element={<Myproduct />}></Route>
             <Route path="create" element={<Create />}></Route>
-            <Route path=":id" element={<div>Specific</div>}></Route>
-            <Route path="update/:id" element={<div>Update Page</div>}></Route>
+
+            <Route path="update/:id" element={<UpdateProduct />}></Route>
+            <Route path=":id" element={<ViewProduct />}></Route>
           </Route>
         </Route>
       </Routes>
