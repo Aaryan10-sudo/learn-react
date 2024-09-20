@@ -1,8 +1,6 @@
-import axios from "axios";
 import React, { useCallback, useEffect, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import { hitApi } from "../services/HitApi";
-import { useNavigate } from "react-router-dom";
 
 const ProductForm = ({
   buttonName = "",
@@ -45,7 +43,6 @@ const ProductForm = ({
   }, []);
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
-    multiple: true,
   });
 
   useEffect(() => {

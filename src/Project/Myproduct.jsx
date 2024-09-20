@@ -27,6 +27,18 @@ const Myproduct = () => {
       console.log(result);
     } catch (error) {}
   };
+
+  const handleView = (id) => {
+    return () => {
+      navigate(`/product/${id}`);
+    };
+  };
+
+  const handleEdit = (id) => {
+    return () => {
+      navigate(`/product/update/${id}`);
+    };
+  };
   const sweetalert2 = (id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -54,7 +66,7 @@ const Myproduct = () => {
             style={{
               border: "1px solid black",
               margin: "10px",
-              height: "320px",
+              height: "340px",
               width: "280px",
             }}
           >
@@ -75,20 +87,10 @@ const Myproduct = () => {
             <div style={{ padding: "10px" }}>Price :{value.Price}</div>
             <div style={{ padding: "10px" }}>Quantity :{value.Quantity}</div>
             <br />
-            <button
-              style={{ margin: "7px" }}
-              onClick={() => {
-                navigate(`/product/${value._id}`);
-              }}
-            >
+            <button style={{ margin: "7px" }} onClick={handleView(value._id)}>
               View
             </button>
-            <button
-              style={{ margin: "7px" }}
-              onClick={() => {
-                navigate(`/product/update/${value._id}`);
-              }}
-            >
+            <button style={{ margin: "7px" }} onClick={handleEdit(value._id)}>
               Update
             </button>
             <button
