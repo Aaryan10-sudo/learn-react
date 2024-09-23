@@ -13,6 +13,7 @@ import {
   changeQuantity,
   changeName,
 } from "../Redux/productSlice";
+import ReadAllProductWithReduxToolkit from "./ReadAllProductWithReduxToolkit";
 
 const Project = () => {
   let infoData = useSelector((state) => {
@@ -34,7 +35,8 @@ const Project = () => {
         >
           <Route index element={<div>Welcome to Project Page</div>}></Route>
           <Route path="product" element={<Outlet />}>
-            <Route index element={<Myproduct />}></Route>
+            {/* <Route index element={<Myproduct />}></Route> */}
+            <Route index element={<ReadAllProductWithReduxToolkit />}></Route>
             <Route path="create" element={<Create />}></Route>
 
             <Route path="update/:id" element={<UpdateProduct />}></Route>
