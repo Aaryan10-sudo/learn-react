@@ -1,19 +1,13 @@
 import React from "react";
-import NavBar from "./NavBar";
-import { Outlet, Route, Routes } from "react-router-dom";
-import Create from "./Create";
-import Myproduct from "./Myproduct";
-import Footer from "./Footer";
-import ViewProduct from "./ViewProduct";
-import UpdateProduct from "./UpdateProduct";
 import { useDispatch, useSelector } from "react-redux";
+import { Outlet, Route, Routes } from "react-router-dom";
+import Footer from "./Footer";
+import NavBar from "./NavBar";
 // import { changeAge, changeName } from "../Redux/infoSlice";
-import {
-  changeCompany,
-  changeQuantity,
-  changeName,
-} from "../Redux/productSlice";
+import CreateProductUsingRTK from "./CreateProductUsingRTX";
 import ReadAllProductWithReduxToolkit from "./ReadAllProductWithReduxToolkit";
+import UpdateProductWithRTK from "./UpdateProductUsingRTX";
+import ViewProjectWithRTK from "./ViewProjectWithRTK";
 
 const Project = () => {
   let infoData = useSelector((state) => {
@@ -37,15 +31,21 @@ const Project = () => {
           <Route path="product" element={<Outlet />}>
             {/* <Route index element={<Myproduct />}></Route> */}
             <Route index element={<ReadAllProductWithReduxToolkit />}></Route>
-            <Route path="create" element={<Create />}></Route>
+            {/* <Route path="create" element={<Create />}></Route> */}
+            <Route path="create" element={<CreateProductUsingRTK />}></Route>
 
-            <Route path="update/:id" element={<UpdateProduct />}></Route>
-            <Route path=":id" element={<ViewProduct />}></Route>
+            {/* <Route path="update/:id" element={<UpdateProduct />}></Route>
+             */}
+            <Route path="update/:id" element={<UpdateProductWithRTK />}></Route>
+
+            {/* <Route path=":id" element={<ViewProduct />}></Route>
+             */}
+            <Route path=":id" element={<ViewProjectWithRTK />}></Route>
           </Route>
         </Route>
       </Routes>
       <br />
-      <div> Info : {infoData.productName}</div>
+      {/* <div> Info : {infoData.productName}</div>
       <div> Quantity : {infoData.quantity}</div>
       <div> Company : {infoData.company}</div>
 
@@ -70,7 +70,7 @@ const Project = () => {
         }}
       >
         Company
-      </button>
+      </button> */}
     </div>
   );
 };

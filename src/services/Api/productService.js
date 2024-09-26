@@ -36,6 +36,7 @@ export const productApi = createApi({
           method: "GET",
         };
       },
+      providesTags: ["readProductById"],
     }),
 
     createProduct: builder.mutation({
@@ -48,6 +49,17 @@ export const productApi = createApi({
       },
       invalidatesTags: ["readProduct"],
     }),
+
+    updateProduct: builder.mutation({
+      query: (info) => {
+        return {
+          url: `/product/${info.id}`,
+          method: "PATCH",
+          body: info.body,
+        };
+      },
+      invalidatesTags: ["readProduct", "readProductById"],
+    }),
   }),
 });
 
@@ -58,4 +70,5 @@ export const {
   useDeleteProductMutation,
   useReadProductByIdQuery,
   useCreateProductMutation,
+  useUpdateProductMutation,
 } = productApi;

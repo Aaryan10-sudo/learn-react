@@ -1,12 +1,16 @@
 import axios from "axios";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import {
   useDeleteProductMutation,
   useReadProductQuery,
 } from "../services/Api/productService";
+import { useNavigate } from "react-router-dom";
 
 const ReadAllProductWithReduxToolkit = () => {
+  let [deleteId, setDeleteId] = useState("");
+
+  let navigate = useNavigate();
   let {
     isError: isReadProductError,
     isLoading: isReadProductLoading,
@@ -24,25 +28,21 @@ const ReadAllProductWithReduxToolkit = () => {
     },
   ] = useDeleteProductMutation();
 
-  console.log(readProductData?.data);
+  // console.log(readProductData?.data);
 
   let products = readProductData?.data || [];
 
   useEffect(() => {
     if (isReadProductError) {
-      console.log(error.error);
+      console.log(readProductError.error);
     }
   }, [isReadProductError, readProductError]);
 
-  const handleDelete = async (id) => {
-    try {
-      let result = await axios({
-        url: `http://localhost:3000/product/${id}`,
-        method: "DELETE",
-      });
-      console.log(result);
-    } catch (error) {}
-  };
+  useEffect(() => {
+    if (isDeleteProductError) {
+      console.log(deleteProductError.error);
+    }
+  }, [isDeleteProductError, deleteProductError]);
 
   const handleView = (id) => {
     return () => {
@@ -86,7 +86,13 @@ const ReadAllProductWithReduxToolkit = () => {
           Loading
         </div>
       ) : (
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            gap: "10px",
+          }}
+        >
           {products.map((value, index) => {
             return (
               <div
@@ -96,6 +102,7 @@ const ReadAllProductWithReduxToolkit = () => {
                   margin: "10px",
                   height: "340px",
                   width: "280px",
+                  borderRadius: "10px",
                 }}
               >
                 <div
@@ -124,24 +131,32 @@ const ReadAllProductWithReduxToolkit = () => {
                 </div>
                 <br />
                 <button
-                  style={{ margin: "7px" }}
+                  style={{ margin: "7px", border: "none" }}
                   onClick={handleView(value._id)}
                 >
                   View
                 </button>
                 <button
-                  style={{ margin: "7px" }}
+                  style={{ margin: "7px", border: "none" }}
                   onClick={handleEdit(value._id)}
                 >
                   Update
                 </button>
                 <button
-                  style={{ margin: "7px" }}
+                  style={{
+                    margin: "7px",
+                    backgroundColor: "red",
+                    border: "none",
+                    color: "white",
+                  }}
                   onClick={() => {
                     sweetalert2(value._id);
+                    setDeleteId(value._id);
                   }}
                 >
-                  Delete
+                  {isDeleteProductLoading && deleteId === value._id
+                    ? "Deleting....."
+                    : "Delete"}
                 </button>
               </div>
             );
